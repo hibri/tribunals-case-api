@@ -4,7 +4,7 @@ properties([
         pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
 
-@Library("Infrastructure")
+@Library("Infrastructure@fix-java-deploy")
 
 import uk.gov.hmcts.contino.WebAppDeploy
 
