@@ -46,11 +46,12 @@ node {
         unstash product
 
         javaDeployer.deployJavaWebApp(deployEnvironment, 'build/libs/tribunals-case-api-1.0.0.jar', 'web.config')
-    }
-    stage('Smoke Test -Dev') {
 
-       // javaDeployer.healthCheck('dev')
+        sleep(200)
+
+        javaDeployer.healthCheck('dev')
     }
+
 
     stage('Deploy - Prod') {
 
@@ -59,10 +60,11 @@ node {
         unstash product
 
         javaDeployer.deployJavaWebApp(deployEnvironment, 'build/libs/tribunals-case-api-1.0.0.jar', 'web.config')
-    }
-    stage('Smoke Test - Prod') {
 
-        // javaDeployer.healthCheck('dev')
+        sleep(200)
+
+        javaDeployer.healthCheck('dev')
     }
+
 
 }
