@@ -45,7 +45,7 @@ node {
 
         unstash product
 
-        javaDeployer.deployJavaWebApp env: deployEnvironment, jarPath: 'build/libs/tribunals-case-api-1.0.0.jar', iisWebConfig: 'web.config'
+        javaDeployer.deployJavaWebApp(deployEnvironment, 'build/libs/tribunals-case-api-1.0.0.jar', 'web.config')
     }
     stage('Smoke Test -Dev') {
 
@@ -58,11 +58,11 @@ node {
 
         unstash product
 
-        javaDeployer.deployJavaWebApp env: deployEnvironment, jarPath: 'build/libs/tribunals-case-api-1.0.0.jar', iisWebConfig: 'web.config'
+        javaDeployer.deployJavaWebApp(deployEnvironment, 'build/libs/tribunals-case-api-1.0.0.jar', 'web.config')
     }
     stage('Smoke Test - Prod') {
 
-        // javaDeployer.healthCheck('prod')
+        // javaDeployer.healthCheck('dev')
     }
 
 }
