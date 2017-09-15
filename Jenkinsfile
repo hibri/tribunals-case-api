@@ -50,7 +50,21 @@ node {
     }
     stage('Smoke Test -Dev') {
 
-        javaDeployer.healthCheck('dev')
+       // javaDeployer.healthCheck('dev')
+    }
+
+    stage('Deploy - Prod') {
+
+        deployEnvironment = 'prod';
+
+        unstash product
+
+        javaDeployer.deployJavaWebApp(deployEnvironment, 'build/libs/tribunals-case-api-1.0.0.jar',
+                'src/main/resources/application_env.yml', 'web.config')
+    }
+    stage('Smoke Test - Prod') {
+
+        // javaDeployer.healthCheck('prod')
     }
 
 }
