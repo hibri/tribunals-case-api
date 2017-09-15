@@ -34,7 +34,7 @@ node {
 
         stage('Package (JAR)') {
             sh "./gradlew clean build -x test"
-            stash product, "build/libs/*.jar"
+            stash name: product, includes: "build/libs/*.jar"
         }
 
     }
